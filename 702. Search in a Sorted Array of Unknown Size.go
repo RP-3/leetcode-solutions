@@ -4,9 +4,9 @@ package leetcode
 
 type ArrayReader struct{}
 
-func (this *ArrayReader) get(index int) int {}
+func (ar *ArrayReader) get(index int) int {}
 
-func search(reader ArrayReader, target int) int {
+func searchUnknownSize(reader ArrayReader, target int) int {
 	l, r := 0, 2147483647
 	for l <= r {
 		mid := (l + r) / 2

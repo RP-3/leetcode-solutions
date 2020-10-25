@@ -55,6 +55,7 @@ func zipLists(l, r *ListNode) *ListNode {
 			tail.Next = r
 			r = r.Next
 		}
+		tail = tail.Next
 	}
 	tail.Next = nil
 
