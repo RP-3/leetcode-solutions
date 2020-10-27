@@ -2,12 +2,6 @@
 
 package leetcode
 
-// ListNode is the standard leetcode definition for singly-linked list.
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
 func rotateRight(head *ListNode, k int) *ListNode {
 	if head == nil {
 		return nil

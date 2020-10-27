@@ -2,9 +2,12 @@
 
 package leetcode
 
+// ArrayReader is a leetcode definition
 type ArrayReader struct{}
 
-func (ar *ArrayReader) get(index int) int {}
+func (ar *ArrayReader) get(index int) int {
+	return 0 // not actual implementation
+}
 
 func searchUnknownSize(reader ArrayReader, target int) int {
 	l, r := 0, 2147483647
