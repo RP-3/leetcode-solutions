@@ -2,7 +2,9 @@
 
 package leetcode
 
-import "sort"
+import (
+	"sort"
+)
 
 func canAttendMeetings(intervals [][]int) bool {
 	sort.Sort(byStartTime(intervals))

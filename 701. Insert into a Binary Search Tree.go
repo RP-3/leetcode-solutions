@@ -2,13 +2,6 @@
 
 package leetcode
 
-// TreeNode is a standard leetcode binary tree node
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
 func insertIntoBST(root *TreeNode, val int) *TreeNode {
 	switch {
 	case root == nil:
