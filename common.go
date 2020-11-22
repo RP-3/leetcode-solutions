@@ -22,6 +22,22 @@ func abs(v int) int {
 	return v
 }
 
+// pow returns a ^ b, where b is a non-negative integer
+func pow(a, b int) int {
+	switch {
+	case b < 0:
+		panic("We're just handling positive exponents here")
+	case b == 0:
+		return 1
+	case b == 1:
+		return a
+	case b%2 == 0:
+		return pow(a*a, b/2)
+	default:
+		return a * pow(a*a, (b-1)/2)
+	}
+}
+
 // ListNode is the standard leetcode definition for singly-linked list.
 type ListNode struct {
 	Val  int
