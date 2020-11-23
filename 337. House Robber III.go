@@ -11,32 +11,20 @@ package leetcode
  * }
  */
  func rob(root *TreeNode) int {
-	memo := make(map[robberCacheKey]int)
-	var inner func(*TreeNode, bool) int
-
-	inner = func(node *TreeNode, canRob bool) int {
-		key := robberCacheKey{node: node, canRob: canRob}
-		cached, ok := memo[key]
-		switch {
-		case node == nil:
-			return 0
-		case ok:
-			return cached
-		case canRob:
-			memo[key] = max(
-				node.Val+inner(node.Left, false)+inner(node.Right, false), // rob
-				inner(node.Left, true)+inner(node.Right, true),            // do not rob
-			)
-		default: // cannot rob
-			memo[key] = inner(node.Left, true) + inner(node.Right, true) // do not rob
+	// returns a tuple containing the max return from robbing
+	// [0] this house and [1] not robbing this house
+	var inner func(*TreeNode) (int, int)
+	inner = func(node *TreeNode) (int, int) {
+		if node == nil {
+			return 0, 0
 		}
-		return memo[key]
+		lRob, lNoRob := inner(node.Left)
+		rRob, rNoRob := inner(node.Right)
+		maxRobbingThis := node.Val + lNoRob + rNoRob
+		maxNotRobbingThis := max(lRob, lNoRob) + max(rRob, rNoRob)
+		return maxRobbingThis, maxNotRobbingThis
 	}
 
-	return max(inner(root, false), inner(root, true))
-}
-
-type robberCacheKey struct {
-	node   *TreeNode
-	canRob bool
+	robRoot, noRobRoot := inner(root)
+	return max(robRoot, noRobRoot)
 }
