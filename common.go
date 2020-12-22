@@ -7,6 +7,22 @@ func min(a, b int) int {
 	return b
 }
 
+func minIntSlice(s []int) int {
+	result := s[0]
+	for _, n := range s {
+		result = min(result, n)
+	}
+	return result
+}
+
+func sumIntSlice(s []int) int {
+	result := 0
+	for _, n := range s {
+		result += n
+	}
+	return result
+}
+
 func max(a, b int) int {
 	if a > b {
 		return a
