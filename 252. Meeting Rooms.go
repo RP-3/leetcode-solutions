@@ -16,9 +16,3 @@ func canAttendMeetings(intervals [][]int) bool {
 	}
 	return true
 }
-
-type byStartTime [][]int
-
-func (a byStartTime) Len() int           { return len(a) }
-func (a byStartTime) Less(i, j int) bool { return a[i][0] < a[j][0] }
-func (a byStartTime) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
